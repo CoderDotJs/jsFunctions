@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<style>
+	.image-slider{
+  width: 300px;
+  height: 200px;
+  position: relative;
+  margin: 50px auto;
+}
+.image{
+  width: 100%;
+  postion: absolute;
+}
+.next{
+  position: absolute;
+  right: 0;
+  top: 43%;
+  z-index: 5;
+}
+.preview{
+  position: absolute;
+  left: 0;
+  top: 43%;
+  z-index: 5;
+}
+button{
+  border: none;
+  background: transparent;
+  color: white;
+  opacity: 0.8;
+  font-size: 20px;
+}
+
+</style>
+</head>
+<body>
+		
+	
+
+<!-- Image Carousel -->
+
+<div class="image-slider">
+  <h1><span class="counter">1/</span> / 5</h1>
+  <button class="preview" onclick="preview()">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+    
+    <img src="https://images.unsplash.com/photo-1627487126208-021144f7f2bd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="image">
+    
+   <button class="next" onclick="next()">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+</div>
+
+
+
+	<script>
+		var images = [
+  'https://images.unsplash.com/photo-1627487126208-021144f7f2bd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80', 
+  'https://images.unsplash.com/photo-1622495548018-4fc6f78d7bef?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+  'https://images.unsplash.com/photo-1627880376117-368469914b61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+  'https://images.unsplash.com/photo-1627909781502-5271fb0e151c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80',
+  'https://images.unsplash.com/photo-1627900352514-7f8bbb3f5edb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
+];
+
+var image = document.querySelector('.image');
+
+var slide = 0;
+var counter = document.querySelector('.counter');
+var count = 0;
+function next(){
+  slide++;
+  if(slide >= images.length){
+	  slide = 0;
+    image.src = images[slide];
+  }
+  else{
+    counter.innerHTML = count;
+  }
+}
+function preview(){
+  slide--;
+  if(slide < 0){
+    slide = images.length - 1;
+    image.src = images[slide]
+  }
+  else{
+    image.src = images[slide]
+  }
+}
+	</script>
+</body>
+</html>
